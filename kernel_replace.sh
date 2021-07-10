@@ -2,7 +2,7 @@
 # 1. Copy this directory to the kernel source file named linux-xxx that you downloaded;
 # 2. three points to focus on in this script depend on your environment.
 
-kernel_path=$(dirname $(pwd))
+kernel_path=$(pwd)
 kernel_list=(${kernel_path//// }) # Points ONE. four slashes. 
 kernel_name=${kernel_list[-1]}
 kernel_num=${kernel_name#*-}

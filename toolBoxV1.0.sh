@@ -160,7 +160,7 @@ function Show_Date()
 while :
 do
 	clear
-	dialog --radiolist "ToolBox V1.0" ${HEIGHT} ${WIDTH} ${TOOLS_SELECTIONS} "1" "De/Compression Tool(.gz/.bz2/.tar/.zip/.xz)" on "2" "SystemWatch Tool" off "3" "Show Date Tool" off "4" "Install essential tools" off "5" "Kernel replace" off 2>$TMP
+	dialog --radiolist "ToolBox V1.0" ${HEIGHT} ${WIDTH} ${TOOLS_SELECTIONS} "1" "De/Compression Tool(.gz/.bz2/.tar/.zip/.xz)" on "2" "SystemWatch Tool" off "3" "Show Date Tool" off 2>$TMP
 	CHOICE=$(cat $TMP)
 	rm -f $TMP
 	# echo "Your choice is $CHOICE"
@@ -174,22 +174,6 @@ do
 			;;
 		"3")
 			Show_Date
-			;;
-	    "4")
-			if [ -f "$Install_essential_tools_file" ]; then
-			    sudo bash "$Install_essential_tools_file" && bash "$Install_essential_tools_file"
-			else
-			    dialog --title "Install_essential_tools_file" --msgbox "File Not exists!" ${HEIGHT} ${WIDTH}
-			fi
-			;;
-		"5")
-			if [ -f "$Kernel_replace_file" ]; then
-			    dialog --title "Kernel_replace_file" --msgbox "# 1. Copy this directory to the kernel source file named linux-xxx that you downloaded;\n
-# 2. three points to focus on in this script depend on your environment." ${HEIGHT} ${WIDTH}
-			    sudo bash "$Kernel_replace_file"
-			else
-			    dialog --title "Kernel_replace_file" --msgbox "File Not exists!" ${HEIGHT} ${WIDTH}
-			fi
 			;;
 		*)
 			echo "Nothing to choose."
