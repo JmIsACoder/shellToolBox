@@ -12,6 +12,7 @@ echo -e "linux_kernel_source_code_num:\t" $kernel_num
 
 sudo mv $kernel_path /usr/src
 
+#sudo chmod -R 755 ./
 #sudo make clean
 
 function install_package {
@@ -33,12 +34,12 @@ install_package
 echo
 echo "make menuconfig."
 echo
-sudo make menuconfig
+make menuconfig
 
 echo
 echo "make."
 echo
-sudo make -j$(nproc)
+make -j$(nproc)
 # Pointe TWO. Since you need to check whether the bzImage file is successfully generated, the path may be different for different machines. Here I take the x86 platform as an example: `/usr/src/$kernel_name/arch/x86/boot/bzImage`;
 if [ ! -f "/usr/src/$kernel_name/arch/x86/boot/bzImage" ]; then
 	echo "Not exits bzImage. Failed."
@@ -48,7 +49,7 @@ fi
 echo
 echo "make modules."
 echo
-sudo make modules
+make modules
 
 echo
 echo "make modules_install."
